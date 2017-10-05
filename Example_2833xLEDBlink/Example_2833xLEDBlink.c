@@ -38,6 +38,8 @@ extern Uint16 RamfuncsLoadSize;
 #endif
 
 
+void Funcao_X(void);
+
 // Prototype statements for functions found within this file.
 __interrupt void cpu_timer0_isr(void);
 
@@ -135,6 +137,8 @@ __interrupt void cpu_timer0_isr(void)
 
    LED2kitTGL=1;
    LED3kitTGL=1;
+	
+	Funcao_X();		
 
    LED1TGL=1;
    LED2TGL=1;
@@ -145,6 +149,14 @@ __interrupt void cpu_timer0_isr(void)
    PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 }
 
+int func_x;
+void Funcao_X(void)
+{
+	func_x++;
+	
+	if(func_x>1000)func_x=0;
+
+}
 
 //===========================================================================
 // No more.
